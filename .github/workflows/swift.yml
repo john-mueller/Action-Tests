@@ -24,8 +24,10 @@ jobs:
       - uses: actions/checkout@v2
       - name: Setup
         run: |
-          export SWIFT_VERSION="$(curl -H 'Accept: text/plain' "https://swiftenv-api.fuller.li/versions?snapshot=false&platform=ubuntu18.04" | tail -n1)"
+          export API_URL="https://swiftenv-api.fuller.li/versions?snapshot=false&platform=ubuntu18.04"
+          export SWIFT_VERSION="$(curl -H 'Accept: text/plain' "$API_URL" | tail -n1)"
           eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
+          ln -s /home/runner/.swiftenv/shims/swift
       - name: Version
         run: |
           export PATH="/home/runner/.swiftenv/bin:/home/runner/.swiftenv/shims:$PATH"
@@ -37,4 +39,4 @@ jobs:
       - name: Test
         run: |
           export PATH="/home/runner/.swiftenv/bin:/home/runner/.swiftenv/shims:$PATH"
-          swift test --enable-test-discovery
+          ./swift test --enable-test-discovery
