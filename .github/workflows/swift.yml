@@ -40,6 +40,7 @@ jobs:
       - name: Setup
         run: |
           eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
+          ln -s /home/runner/.swiftenv/bin/swift /usr/local/bin/swift
           swift --version
           echo "$PATH"
       - name: Path
