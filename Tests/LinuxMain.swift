@@ -1,7 +1,4 @@
-import XCTest
+import Foundation
 
-import Action_TestsTests
-
-var tests = [XCTestCaseEntry]()
-tests += Action_TestsTests.allTests()
-XCTMain(tests)
+fputs("To run tests on Linux, use 'swift test --enable-test-discovery'\n", stderr)
+exit(1)
