@@ -11,7 +11,7 @@ jobs:
       matrix:
         os: [macos-latest, ubuntu-latest]
       fail-fast: false
-    name: Swift ${{ SWIFT_VERSION }} on ${{ matrix.os }}
+    name: Swift ${{ env.SWIFT_VERSION }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
