@@ -25,8 +25,11 @@ jobs:
           export API_URL="https://swiftenv-api.fuller.li/versions?snapshot=false&platform=ubuntu18.04"
           export SWIFT_VERSION="$(curl -H 'Accept: text/plain' "$API_URL" | tail -n1)"
           eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
+          swiftenv version
       - name: Version
         run: |
+          export API_URL="https://swiftenv-api.fuller.li/versions?snapshot=false&platform=ubuntu18.04"
+          export SWIFT_VERSION="$(curl -H 'Accept: text/plain' "$API_URL" | tail -n1)"
           export PATH="/home/runner/.swiftenv/bin:/home/runner/.swiftenv/shims:$PATH"
           swift --version
       - name: Build
@@ -43,5 +46,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-          git checkout https://github.com/realm/swiftlint
+          git clone https://github.com/realm/swiftlint
           ls
