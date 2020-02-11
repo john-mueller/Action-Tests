@@ -3,16 +3,17 @@ on:
   pull_request:
     branches: 
       - master
-env: 
-  SWIFT_VERSION: 5.1.4
 jobs:
   tests:
     strategy:
       matrix:
         os: [macos-latest, ubuntu-latest]
+        versions: [5.1.4]
       fail-fast: false
-    name: Swift ${{ env.SWIFT_VERSION }} on ${{ matrix.os }}
+    name: ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
+    env: 
+      SWIFT_VERSION: ${{ matrix.versions }}
     steps:
       - uses: actions/checkout@v2
       - name: Setup
