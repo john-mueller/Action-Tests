@@ -1,3 +1,3 @@
-struct Action_Tests {
+struct ActionTests {
     var text = "Hello, World!"
 }
