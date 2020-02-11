@@ -44,5 +44,5 @@ jobs:
           echo "$PATH"
       - name: Version
         run: |
-          export PATH="home/runner/.swiftenv/bin:$PATH"
+          export PATH="/home/runner/.swiftenv/bin:/home/runner/.swiftenv/shims:$PATH"
           swift --version
