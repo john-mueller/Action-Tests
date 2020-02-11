@@ -29,14 +29,16 @@ jobs:
           export SWIFTENV_ROOT="$HOME/.swiftenv"
           export PATH="$SWIFTENV_ROOT/bin:$SWIFTENV_ROOT/shims:$PATH"
 
-
+          echo "$PATH"
           echo "::set-env name=SWIFT_VERSION::$SWIFT_VERSION"
           echo "::add-path::$SWIFTENV_ROOT/shims"
           echo "::add-path::$SWIFTENV_ROOT/bin"
+          echo "$PATH"
 #          eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
 #          swiftenv version
       - name: Version
         run: |
+          echo "$PATH"
           swift --version
       - name: Build
         run: |
