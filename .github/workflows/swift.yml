@@ -17,9 +17,9 @@ jobs:
         run: swift test
   linux:
     name: Linux
-    runs-on: [ubuntu-latest]
+    runs-on: ubuntu-latest
     env:
-      SWIFT_VERSION: 5.1
+      SWIFT_VERSION: 5.1.4
     steps:
       - uses: actions/checkout@v2
       - name: Setup
@@ -35,4 +35,4 @@ jobs:
       - name: Test
         run: |
           export PATH="/home/runner/.swiftenv/bin:/home/runner/.swiftenv/shims:$PATH"
-          swift test
+          swift test --enable-test-discovery
