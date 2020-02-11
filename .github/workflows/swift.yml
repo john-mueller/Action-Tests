@@ -25,16 +25,15 @@ jobs:
           export API_URL="https://swiftenv-api.fuller.li/versions?snapshot=false&platform=ubuntu18.04"
           export SWIFT_VERSION="$(curl -H 'Accept: text/plain' "$API_URL" | tail -n1)"
           eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
-          ln -s /home/runner/.swiftenv/shims/swift
-          ls -l
-          ./swift --version
       - name: Version
         run: |
-          ls -l
-          ./swift --version
+          export PATH="/home/runner/.swiftenv/shims:$PATH"
+          swift --version
       - name: Build
         run: |
+          export PATH="/home/runner/.swiftenv/shims:$PATH"
           ./swift build
       - name: Test
         run: |
+          export PATH="/home/runner/.swiftenv/shims:$PATH"
           ./swift test --enable-test-discovery
