@@ -32,9 +32,6 @@ jobs:
 
           echo "::set-env name=SWIFT_VERSION::$SWIFT_VERSION"
           echo "::add-path::$SWIFTENV_ROOT/shims"
-#          echo "::add-path::$SWIFTENV_ROOT/bin"
-#          eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
-#          swiftenv version
       - name: Version
         run: |
           swift --version
