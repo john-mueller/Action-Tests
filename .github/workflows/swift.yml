@@ -27,13 +27,13 @@ jobs:
           eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
       - name: Version
         run: |
-          export PATH="/home/runner/.swiftenv/shims:$PATH"
+          export PATH="/home/runner/.swiftenv/bin:/home/runner/.swiftenv/shims:$PATH"
           swift --version
       - name: Build
         run: |
-          export PATH="/home/runner/.swiftenv/shims:$PATH"
-          ./swift build
+          export PATH="/home/runner/.swiftenv/bin:/home/runner/.swiftenv/shims:$PATH"
+          swift build
       - name: Test
         run: |
-          export PATH="/home/runner/.swiftenv/shims:$PATH"
-          ./swift test --enable-test-discovery
+          export PATH="/home/runner/.swiftenv/bin:/home/runner/.swiftenv/shims:$PATH"
+          swift test --enable-test-discovery
