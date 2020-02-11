@@ -34,7 +34,7 @@ jobs:
     name: Linux Alt
     runs-on: [ubuntu-latest]
     env:
-      key: SWIFT_VERSION=5.1
+      SWIFT_VERSION: 5.1
     steps:
       - uses: actions/checkout@v2
       - name: Setup
