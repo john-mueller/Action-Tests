@@ -41,15 +41,3 @@ jobs:
       - name: Test
         run: |
           swift test --enable-test-discovery
-  swiftlint:
-    name: SwiftLint
-    runs-on: macos-latest
-    steps:
-      - name: Install
-        run: |
-          git clone https://github.com/realm/swiftlint
-          cd swiftlint
-          script/bootstrap; make install
-      - uses: actions/checkout@v2
-      - name: Lint
-        run: swiftlint
