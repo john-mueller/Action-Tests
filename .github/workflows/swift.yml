@@ -37,3 +37,11 @@ jobs:
         run: |
           export PATH="/home/runner/.swiftenv/bin:/home/runner/.swiftenv/shims:$PATH"
           swift test --enable-test-discovery
+  swiftlint:
+    name: SwiftLint
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          git checkout https://github.com/realm/swiftlint
+          ls
