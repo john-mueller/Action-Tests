@@ -7,7 +7,7 @@ let package = Package(
     products: [
         .library(
             name: "ActionTests",
-            targets: ["ActionTests"]),
+            targets: ["ActionTests"])
     ],
     dependencies: [
     ],
