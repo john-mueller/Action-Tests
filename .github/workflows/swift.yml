@@ -1,48 +1,38 @@
 name: Tests
 on: 
-  push:
-    branches: 
-      - master
   pull_request:
     branches: 
       - master
 jobs:
   macOS:
-    name: Swift on macOS
+    name: macOS
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-#      - name: Version
-#        run: swift --version
-#      - name: Build
-#        run: swift build
-#      - name: Test
-#        run: swift test
+      - name: Version
+        run: swift --version
+      - name: Build
+        run: swift build
+      - name: Test
+        run: swift test
   linux:
-    name: Swift on Linux
-    runs-on: ubuntu-latest
-    steps:
-#      - uses: fwal/setup-swift@master
-      - uses: actions/checkout@v2
-#      - name: Version
-#        run: swift --version
-#      - name: Build
-#        run: swift build
-#      - name: Test
-#        run: swift test
-  linux-alt:
-    name: Linux Alt
+    name: Linux
     runs-on: [ubuntu-latest]
     env:
       SWIFT_VERSION: 5.1
     steps:
       - uses: actions/checkout@v2
       - name: Setup
-        run: |
-          eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
-          swift --version
-          echo "$PATH"
+        run: eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
       - name: Version
         run: |
           export PATH="/home/runner/.swiftenv/bin:/home/runner/.swiftenv/shims:$PATH"
           swift --version
+      - name: Build
+        run: |
+          export PATH="/home/runner/.swiftenv/bin:/home/runner/.swiftenv/shims:$PATH"
+          swift build
+      - name: Test
+        run: |
+          export PATH="/home/runner/.swiftenv/bin:/home/runner/.swiftenv/shims:$PATH"
+          swift test
