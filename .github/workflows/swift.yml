@@ -12,21 +12,32 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Version
-        run: swift --version
-      - name: Build
-        run: swift build
-      - name: Test
-        run: swift test
+#      - name: Version
+#        run: swift --version
+#      - name: Build
+#        run: swift build
+#      - name: Test
+#        run: swift test
   linux:
     name: Swift on Linux
     runs-on: ubuntu-latest
     steps:
-      - uses: fwal/setup-swift@master
+#      - uses: fwal/setup-swift@master
       - uses: actions/checkout@v2
+#      - name: Version
+#        run: swift --version
+#      - name: Build
+#        run: swift build
+#      - name: Test
+#        run: swift test
+  linux-alt:
+    name: Linux Alt
+    runs-on: [ubuntu-latest]
+    env:
+      key: SWIFT_VERSION=5.1
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup
+        run: eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
       - name: Version
         run: swift --version
-      - name: Build
-        run: swift build
-      - name: Test
-        run: swift test
