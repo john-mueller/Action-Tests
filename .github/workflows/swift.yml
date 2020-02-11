@@ -3,23 +3,16 @@ on:
   pull_request:
     branches: 
       - master
+env: 
+  SWIFT_VERSION: 5.1.4
 jobs:
-  macOS:
-    name: macOS
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Version
-        run: swift --version
-      - name: Build
-        run: swift build
-      - name: Test
-        run: swift test
-  linux:
-    name: Linux
-    runs-on: ubuntu-latest
-    env:
-      SWIFT_VERSION: 5.1.4
+  tests:
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+      fail-fast: false
+    name: Swift ${{ SWIFT_VERSION }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
       - name: Setup
@@ -36,3 +29,36 @@ jobs:
         run: |
           export PATH="/home/runner/.swiftenv/bin:/home/runner/.swiftenv/shims:$PATH"
           swift test --enable-test-discovery
+
+#   macOS:
+#     name: macOS
+#     runs-on: macos-latest
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Version
+#         run: swift --version
+#       - name: Build
+#         run: swift build
+#       - name: Test
+#         run: swift test
+#   linux:
+#     name: Linux
+#     runs-on: ubuntu-latest
+#     env:
+#       SWIFT_VERSION: 5.1.4
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Setup
+#         run: eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
+#       - name: Version
+#         run: |
+#           export PATH="/home/runner/.swiftenv/bin:/home/runner/.swiftenv/shims:$PATH"
+#           swift --version
+#       - name: Build
+#         run: |
+#           export PATH="/home/runner/.swiftenv/bin:/home/runner/.swiftenv/shims:$PATH"
+#           swift build
+#       - name: Test
+#         run: |
+#           export PATH="/home/runner/.swiftenv/bin:/home/runner/.swiftenv/shims:$PATH"
+#           swift test --enable-test-discovery
