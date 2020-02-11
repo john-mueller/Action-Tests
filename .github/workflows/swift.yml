@@ -27,6 +27,7 @@ jobs:
           eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
           ln -s /home/runner/.swiftenv/shims/swift
           ls -l
+          ./swift --version
       - name: Version
         run: |
           ls -l
