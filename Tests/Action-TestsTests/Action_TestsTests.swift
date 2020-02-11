@@ -8,8 +8,4 @@ final class Action_TestsTests: XCTestCase {
         // results.
         XCTAssertEqual(Action_Tests().text, "Hello, World!")
     }
-
-    static var allTests = [
-        ("testExample", testExample),
-    ]
 }
