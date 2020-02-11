@@ -1,5 +1,4 @@
-name: Swift
-
+name: Tests
 on: 
   push:
     branches: 
@@ -7,19 +6,27 @@ on:
   pull_request:
     branches: 
       - master
-
 jobs:
-  build:
-    name: Swift on ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [macOS-latest, ubuntu-latest]
-      fail-fast: false
+  macOS:
+    name: Swift on macOS
+    runs-on: macos-latest
     steps:
-    - uses: fwal/setup-swift@master
-    - uses: actions/checkout@v2
-    - name: Build
-      run: swift build -v
-    - name: Run tests
-      run: swift test -v
+      - uses: actions/checkout@v2
+      - name: Version
+        run: swift --version
+      - name: Build
+        run: swift build
+      - name: Test
+        run: swift test
+  linux:
+    name: Swift on Linux
+    runs-on: ubuntu-latest
+    steps:
+      - uses: fwal/setup-swift@master
+      - uses: actions/checkout@v2
+      - name: Version
+        run: swift --version
+      - name: Build
+        run: swift build
+      - name: Test
+        run: swift test
